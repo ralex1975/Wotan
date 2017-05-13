@@ -8,8 +8,10 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/framework.hpp>
 
+#include "application.hpp"
+
 // WARN: do not include in a namespace
-boost::unit_test::test_suite* init_unit_test_suite(int, char*[])
+boost::unit_test::test_suite * init_unit_test_suite(int, char*[])
 {
 	int argc = boost::unit_test::framework::master_test_suite().argc;
 	char ** argv = boost::unit_test::framework::master_test_suite().argv;
@@ -22,10 +24,12 @@ boost::unit_test::test_suite* init_unit_test_suite(int, char*[])
 	BOOST_TEST_MESSAGE(header.str());
 	BOOST_TEST_MESSAGE(rule);
 
-	boost::unit_test::test_suite* test = BOOST_TEST_SUITE("Wotan test suite");
+	boost::unit_test::test_suite * test = BOOST_TEST_SUITE("Wotan test suite");
 
 	// individual tests
+	test->add(testSuite::application::suite());
 
 	return test;
 }
+
 #endif
