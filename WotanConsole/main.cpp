@@ -5,6 +5,10 @@
 #include <exception>
 #include <string>
 #include <string.h>
+#include <vector>
+
+#include <boost/date_time/posix_time/posix_time.hpp>
+#include <boost/thread/thread.hpp> 
 
 #ifdef _WIN32
 #include "StdAfx.hpp"
@@ -22,22 +26,7 @@ int main(int argc, char ** argv)
 
 	try
 	{
-		// connect the gateway
-		std::string appLocation = "C:\\Jts\\ibgateway\\964\\";
-		std::string appName = "ibgateway.exe";
-		std::list<DWORD> processes;
-		Wotan::processHelper hlp;
-		getProcesses(processes, appName);
-		
-		if (processes.size() > 0)
-		{
-			// process already started
-			// quit all ?
-			return 0;
-		}
-		
-		// launch a new instance
-		launchProcess(appLocation + appName);
+
 	}
 	catch (std::exception & e)
 	{

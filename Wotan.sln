@@ -9,8 +9,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testSuite", "testSuite\test
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WotanCommon", "WotanCommon\WotanCommon.vcxproj", "{90D66730-D991-4077-873A-4917550F7DAA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9C3126E-CEA8-41A8-A714-7644B016DB3C} = {E9C3126E-CEA8-41A8-A714-7644B016DB3C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WotanConsole", "WotanConsole\WotanConsole.vcxproj", "{38FA47DE-2A9C-43CB-BAB0-BE589F3E2BB5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{90D66730-D991-4077-873A-4917550F7DAA} = {90D66730-D991-4077-873A-4917550F7DAA}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TwsSocketClient", "..\..\TWS API\source\CppClient\client\TwsSocketClient.vcxproj", "{E9C3126E-CEA8-41A8-A714-7644B016DB3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +38,10 @@ Global
 		{38FA47DE-2A9C-43CB-BAB0-BE589F3E2BB5}.Debug|x64.Build.0 = Debug|x64
 		{38FA47DE-2A9C-43CB-BAB0-BE589F3E2BB5}.Release|x64.ActiveCfg = Release|x64
 		{38FA47DE-2A9C-43CB-BAB0-BE589F3E2BB5}.Release|x64.Build.0 = Release|x64
+		{E9C3126E-CEA8-41A8-A714-7644B016DB3C}.Debug|x64.ActiveCfg = Debug|x64
+		{E9C3126E-CEA8-41A8-A714-7644B016DB3C}.Debug|x64.Build.0 = Debug|x64
+		{E9C3126E-CEA8-41A8-A714-7644B016DB3C}.Release|x64.ActiveCfg = Release|x64
+		{E9C3126E-CEA8-41A8-A714-7644B016DB3C}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
