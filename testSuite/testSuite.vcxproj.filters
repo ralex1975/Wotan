@@ -24,12 +24,24 @@
     <ClCompile Include="src\javaAccessBridge.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\datetime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tws.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\application.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\javaAccessBridge.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\datetime.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tws.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

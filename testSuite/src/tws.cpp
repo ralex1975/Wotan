@@ -1,13 +1,13 @@
-#ifndef TEST_APPLICATION_CPP_
-#define TEST_APPLICATION_CPP_
+#ifndef TEST_TWS_CPP_
+#define TEST_TWS_CPP_
 
-#include "javaAccessBridge.hpp"
+#include <boost/thread/thread.hpp> 
 
-#include "application/processHelper.hpp"
+#include "tws.hpp"
 
 namespace testSuite
 {
-	void javaAccessBridge::test()
+	void tws::test()
 	{
 		BOOST_TEST_MESSAGE("Testing test...");
 
@@ -27,10 +27,10 @@ namespace testSuite
 
 		BOOST_TEST_MESSAGE("test test finished");
 	}
-	boost::unit_test_framework::test_suite* javaAccessBridge::suite()
+	boost::unit_test_framework::test_suite* tws::suite()
 	{
 		boost::unit_test_framework::test_suite * suite = BOOST_TEST_SUITE("javaAccessBridge Tests");
-		suite->add(BOOST_TEST_CASE(&javaAccessBridge::test));
+		suite->add(BOOST_TEST_CASE(&tws::test));
 		return suite;
 	}
 }

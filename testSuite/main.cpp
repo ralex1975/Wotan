@@ -9,6 +9,9 @@
 #include <boost/test/framework.hpp>
 
 #include "application.hpp"
+#include "javaAccessBridge.hpp"
+#include "datetime.hpp"
+#include "tws.hpp"
 
 // WARN: do not include in a namespace
 boost::unit_test::test_suite * init_unit_test_suite(int, char*[])
@@ -28,6 +31,9 @@ boost::unit_test::test_suite * init_unit_test_suite(int, char*[])
 
 	// individual tests
 	test->add(testSuite::application::suite());
+	test->add(testSuite::datetime::suite());
+	test->add(testSuite::javaAccessBridge::suite());
+	test->add(testSuite::tws::suite());
 
 	return test;
 }

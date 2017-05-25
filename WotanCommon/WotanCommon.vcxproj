@@ -45,7 +45,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)lib\</OutDir>
     <TargetName>$(ProjectName)_$(Plateform)_$(PlatformToolset)_sd</TargetName>
-    <IncludePath>.;$(INCLUDE);$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>.;src;C:\TWS API\source\CppClient\client;$(INCLUDE);$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)lib\</OutDir>
@@ -83,12 +83,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\application\logger.hpp" />
     <ClInclude Include="src\application\processHelper.hpp" />
+    <ClInclude Include="src\pattern\abstractFactory.hpp" />
+    <ClInclude Include="src\pattern\enumManager.hpp" />
+    <ClInclude Include="src\pattern\singleton.hpp" />
+    <ClInclude Include="src\tws\client.hpp" />
+    <ClInclude Include="src\tws\clients\historicalDataClient.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\application\logger.cpp" />
     <ClCompile Include="src\application\processHelper.cpp" />
+    <ClCompile Include="src\tws\client.cpp" />
+    <ClCompile Include="src\tws\clients\historicalDataClient.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>

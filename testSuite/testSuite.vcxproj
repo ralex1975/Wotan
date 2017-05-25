@@ -94,11 +94,15 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\application.cpp" />
+    <ClCompile Include="src\datetime.cpp" />
     <ClCompile Include="src\javaAccessBridge.cpp" />
+    <ClCompile Include="src\tws.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\application.hpp" />
+    <ClInclude Include="src\datetime.hpp" />
     <ClInclude Include="src\javaAccessBridge.hpp" />
+    <ClInclude Include="src\tws.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

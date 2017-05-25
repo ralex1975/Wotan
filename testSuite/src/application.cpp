@@ -100,6 +100,7 @@ namespace testSuite
 
 		BOOST_TEST_MESSAGE("test createProcess finished");
 	}
+
 	boost::unit_test_framework::test_suite* application::suite()
 	{
 		boost::unit_test_framework::test_suite * suite = BOOST_TEST_SUITE("application Tests");

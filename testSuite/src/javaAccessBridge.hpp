@@ -4,9 +4,9 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <bridge/AccessBridgeCalls.h>
-#include <bridge/AccessBridgePackages.h>
-#include <bridge/AccessBridgeCallbacks.h>
+//#include <bridge/AccessBridgeCalls.h>
+//#include <bridge/AccessBridgePackages.h>
+//#include <bridge/AccessBridgeCallbacks.h>
 
 namespace testSuite
 {
