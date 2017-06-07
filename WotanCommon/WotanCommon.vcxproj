@@ -90,6 +90,8 @@
     <ClInclude Include="src\pattern\singleton.hpp" />
     <ClInclude Include="src\tws\client.hpp" />
     <ClInclude Include="src\tws\clients\historicalDataClient.hpp" />
+    <ClInclude Include="src\tws\enum.hpp" />
+    <ClInclude Include="src\tws\enums\sectype.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

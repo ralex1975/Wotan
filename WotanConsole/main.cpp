@@ -19,6 +19,7 @@
 #endif
 
 #include "tws/clients/historicalDataClient.hpp"
+#include "tws/enum.hpp"
 #include "application/logger.hpp"
 
 boost::condition_variable cv_;
@@ -55,14 +56,14 @@ int main(int argc, char ** argv)
 
 		Contract contract;
 		contract.symbol = "EUR";
-		contract.secType = "CASH";
+		contract.secType = Wotan::enumManager<Wotan::secType::secType>::toString(Wotan::secType::CASH);
 		contract.currency = "USD";
 		contract.exchange = "IDEALPRO";
 
 		boost::posix_time::ptime dt(boost::gregorian::date(2015, boost::gregorian::Jan, 01),
 			boost::posix_time::time_duration(00, 00, 00));
 
-		cl.request(contract, dt, "1 M", "1 day", "MIDPOINT");
+		cl.request(contract, dt, "1 M", "1 day", Wotan::whatToShow::MIDPOINT);
 
 		// barrier
 		boost::unique_lock<boost::mutex> lk(m_);

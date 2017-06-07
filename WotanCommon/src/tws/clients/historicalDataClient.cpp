@@ -11,15 +11,15 @@ namespace Wotan
 	{
 		data dt;
 
-		dt.date_ = date;
-		dt.open_ = open;
-		dt.high_ = high;
-		dt.low_  = low ;
-		dt.close_ = close;
-		dt.volume_ = volume;
-		dt.barCount_ = barCount;
-		dt.WAP_ = WAP;
-		dt.hasGaps_ = hasGaps;
+		dt.date_		= date		;
+		dt.open_		= open		;
+		dt.high_		= high		;
+		dt.low_			= low		;
+		dt.close_		= close		;
+		dt.volume_		= volume	;
+		dt.barCount_	= barCount	;
+		dt.WAP_			= WAP		;
+		dt.hasGaps_		= hasGaps	;
 
 		data_.push_back(dt);
 
@@ -46,14 +46,16 @@ namespace Wotan
 		const boost::posix_time::ptime & endDate, 
 		const std::string & durationStr, 
 		const std::string & barSizeSetting, 
-		const std::string & whatToShow)
+		whatToShow wts)
 	{
 		std::stringstream stream;
 		stream.imbue(std::locale(std::locale::classic(), facet_));
 		stream << endDate;
 
 		client_->reqHistoricalData(4001, c, stream.str().c_str(), 
-			durationStr, barSizeSetting, whatToShow, 1, 1, TagValueListSPtr());
+			durationStr, barSizeSetting, 
+			Wotan::enumManager<whatToShow>::toString(wts) , 
+			1, 1, TagValueListSPtr());
 
 		state_ = ST_HISTORICALDATAREQUESTS_ACK;
 	}

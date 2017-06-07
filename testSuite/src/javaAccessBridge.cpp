@@ -1,5 +1,5 @@
-#ifndef TEST_APPLICATION_CPP_
-#define TEST_APPLICATION_CPP_
+#ifndef TEST_JAB_CPP_
+#define TEST_JAB_CPP_
 
 #include "javaAccessBridge.hpp"
 
