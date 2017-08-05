@@ -252,3 +252,4 @@ paket-files/
 *.sln.iml
 /lib/WotanCommon_x64_v140_sd.lib
 /lib/WotanCommon_x64_v140_s.lib
+*.jfm

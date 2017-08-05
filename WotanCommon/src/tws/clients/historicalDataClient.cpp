@@ -9,6 +9,9 @@ namespace Wotan
 	void historicalDataClient::historicalData(TickerId reqId, const std::string& date, double open, double high,
 		double low, double close, int volume, int barCount, double WAP, int hasGaps) 
 	{
+		// when the ts is finished, we receive a date in the format
+		// finished-20141201  00:00:00-20150101  00:00:00
+		// we need to return a code to the calling procedure accordingly
 		data dt;
 
 		dt.date_		= date		;
@@ -22,12 +25,6 @@ namespace Wotan
 		dt.hasGaps_		= hasGaps	;
 
 		data_.push_back(dt);
-
-		if (state_ = ST_HISTORICALDATAREQUESTS)
-		{
-			// finished ?
-			int i = 0;
-		}
 	}
 
 	historicalDataClient::historicalDataClient()
@@ -44,17 +41,21 @@ namespace Wotan
 	void historicalDataClient::request(
 		const Contract & c, 
 		const boost::posix_time::ptime & endDate, 
-		const std::string & durationStr, 
-		const std::string & barSizeSetting, 
+		const duration & dur,
+		bar::size sz, 
 		whatToShow wts)
 	{
-		std::stringstream stream;
-		stream.imbue(std::locale(std::locale::classic(), facet_));
-		stream << endDate;
+		std::stringstream dtStream;
+		dtStream.imbue(std::locale(std::locale::classic(), facet_));
+		dtStream << endDate;
 
-		client_->reqHistoricalData(4001, c, stream.str().c_str(), 
-			durationStr, barSizeSetting, 
-			Wotan::enumManager<whatToShow>::toString(wts) , 
+		std::stringstream durStream;
+		durStream << dur;
+
+		client_->reqHistoricalData(4001, c, 
+			dtStream.str().c_str(), durStream.str(),
+			Wotan::enumManager<whatToShow>::toString(wts),
+			Wotan::enumManager<bar::size>::toString(sz),
 			1, 1, TagValueListSPtr());
 
 		state_ = ST_HISTORICALDATAREQUESTS_ACK;

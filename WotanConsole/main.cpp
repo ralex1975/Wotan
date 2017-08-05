@@ -1,5 +1,8 @@
+#pragma once
 #ifndef MAIN_CPP_
 #define MAIN_CPP_
+
+#include "tws/enum.hpp"
 
 #include <list>
 #include <exception>
@@ -19,13 +22,13 @@
 #endif
 
 #include "tws/clients/historicalDataClient.hpp"
-#include "tws/enum.hpp"
 #include "application/logger.hpp"
 
 boost::condition_variable cv_;
 std::atomic<bool> terminate_;
 boost::mutex m_;
 
+// TODO: create an async client
 void loop(Wotan::client & cl)
 {
 	while (cl.isConnected())
@@ -47,27 +50,29 @@ int main(int argc, char ** argv)
 
 		auto cl = Wotan::historicalDataClient();
 
-		if (cl.connect("127.0.0.1", 4001, 0))
+		if (cl.connect("127.0.0.1", 4002, 0))
 		{
 			boost::thread(boost::bind(loop, std::ref(cl))).detach();
+			boost::this_thread::sleep(boost::posix_time::milliseconds(1000));
+
+			Contract contract;
+			contract.symbol = "EUR";
+			contract.secType = Wotan::enumManager<Wotan::secType>::toString(Wotan::secType::cash);
+			contract.currency = "USD";
+			contract.exchange = "IDEALPRO";
+
+			boost::posix_time::ptime dt(boost::gregorian::date(2015, boost::gregorian::Jan, 01),
+				boost::posix_time::time_duration(0, 0, 0));
+
+			cl.request(contract, dt, 
+				Wotan::duration(1, Wotan::duration::type::months),
+				Wotan::bar::size::oneDay,
+				Wotan::whatToShow::MIDPOINT);
+
+			// barrier
+			boost::unique_lock<boost::mutex> lk(m_);
+			while (!terminate_) cv_.wait(lk);
 		}
-		
-		boost::this_thread::sleep(boost::posix_time::milliseconds(1000));
-
-		Contract contract;
-		contract.symbol = "EUR";
-		contract.secType = Wotan::enumManager<Wotan::secType::secType>::toString(Wotan::secType::CASH);
-		contract.currency = "USD";
-		contract.exchange = "IDEALPRO";
-
-		boost::posix_time::ptime dt(boost::gregorian::date(2015, boost::gregorian::Jan, 01),
-			boost::posix_time::time_duration(00, 00, 00));
-
-		cl.request(contract, dt, "1 M", "1 day", Wotan::whatToShow::MIDPOINT);
-
-		// barrier
-		boost::unique_lock<boost::mutex> lk(m_);
-		while (!terminate_) cv_.wait(lk);
 
 		LOG_INFO() << "Application is shutting down...";
 	}

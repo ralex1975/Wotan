@@ -90,6 +90,9 @@
     <ClInclude Include="src\pattern\singleton.hpp" />
     <ClInclude Include="src\tws\client.hpp" />
     <ClInclude Include="src\tws\clients\historicalDataClient.hpp" />
+    <ClInclude Include="src\tws\enums\whatToShow.hpp" />
+    <ClInclude Include="src\tws\time\bar.hpp" />
+    <ClInclude Include="src\tws\time\duration.hpp" />
     <ClInclude Include="src\tws\enum.hpp" />
     <ClInclude Include="src\tws\enums\sectype.hpp" />
     <ClInclude Include="stdafx.h" />
@@ -100,6 +103,8 @@
     <ClCompile Include="src\application\processHelper.cpp" />
     <ClCompile Include="src\tws\client.cpp" />
     <ClCompile Include="src\tws\clients\historicalDataClient.cpp" />
+    <ClCompile Include="src\tws\time\bar.cpp" />
+    <ClCompile Include="src\tws\time\duration.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>

@@ -17,7 +17,7 @@ namespace Wotan
 	class client : public EWrapper
 	{
 	public:
-		enum State 
+		enum State : int
 		{
 			ST_CONNECT,
 			ST_TICKDATAOPERATION,
@@ -66,7 +66,10 @@ namespace Wotan
 			ST_CANCELORDER_ACK,
 			ST_PING,
 			ST_PING_ACK,
-			ST_IDLE
+			ST_IDLE,
+
+			// we provide a message for the end of query
+			ST_HISTORICALDATAREQUESTSEND = -ST_HISTORICALDATAREQUESTS
 		};
 
 	public:

@@ -6,35 +6,39 @@
 
 namespace Wotan
 {
-	namespace secType
+	// see https://interactivebrokers.github.io/tws-api/basic_contracts.html#fop
+	enum secType : char
 	{
-		enum secType : char
-		{
-			STK		= 1,
-			OPT		= 2,
-			FUT		= 3,
-			IND		= 4,
-			FOP		= 5,
-			CASH	= 6,
-			BAG		= 7,
-			NEWS	= 8,
-			unknown = 0
-		};
-	}
-	
+		stocks			= 1,
+		options			= 2,
+		futures			= 3,
+		indexes			= 4,
+		futuresOnOption	= 5,
+		cash			= 6,
+		bag				= 7,
+		news			= 8,
+		bonds			= 9,
+		mutualFunds		= 10,
+		commodities		= 11,
+		dutchWarrants	= 12
+	};
 
 	template <>
-	const std::vector<std::pair<secType::secType, std::string> >
-		enumConversions<secType::secType>::enumToStringVector =
+	const std::vector<std::pair<secType, std::string> >
+		enumConversions<secType>::enumToStringVector =
 	{
-		 { secType::STK	, "STK"		}
-		,{ secType::OPT	, "OPT"		}
-		,{ secType::FUT	, "FUT"		}
-		,{ secType::IND	, "IND"		}
-		,{ secType::FOP	, "FOP"		}
-		,{ secType::CASH, "CASH"	}
-		,{ secType::BAG	, "BAG"		}
-		,{ secType::NEWS, "NEWS"	}
+		 { secType::stocks			, "STK"		}
+		,{ secType::options			, "OPT"		}
+		,{ secType::futures			, "FUT"		}
+		,{ secType::indexes			, "IND"		}
+		,{ secType::futuresOnOption	, "FOP"		}
+		,{ secType::cash			, "CASH"	}
+		,{ secType::bag				, "BAG"		}
+		,{ secType::news			, "NEWS"	}
+		,{ secType::bonds			, "BOND"	}
+		,{ secType::mutualFunds		, "FUND"	}
+		,{ secType::commodities		, "CMDTY"	}
+		,{ secType::dutchWarrants	, "IOPT"	}
 	};
 }
 
